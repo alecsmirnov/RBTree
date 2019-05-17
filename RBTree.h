@@ -1,46 +1,46 @@
-#ifndef RBTREE_H
+п»ї#ifndef RBTREE_H
 #define RBTREE_H
 
 #include <stdint.h>
 
-// Цвет узла К/Ч дерева
+// Р¦РІРµС‚ СѓР·Р»Р° Рљ/Р§ РґРµСЂРµРІР°
 typedef enum { RED, BLACK } color_t; 
 
-typedef struct RBNode {			// Узел К/Ч дерева
-	uint8_t value : 6;			// Поле (6 бит), для хранения букв латинского алфавита в верхнем и нижнем регистре
-	color_t color;				// Цвета узла: RED, BLACK	
+typedef struct RBNode {			// РЈР·РµР» Рљ/Р§ РґРµСЂРµРІР°
+	uint8_t value : 6;			// РџРѕР»Рµ (6 Р±РёС‚), РґР»СЏ С…СЂР°РЅРµРЅРёСЏ Р±СѓРєРІ Р»Р°С‚РёРЅСЃРєРѕРіРѕ Р°Р»С„Р°РІРёС‚Р° РІ РІРµСЂС…РЅРµРј Рё РЅРёР¶РЅРµРј СЂРµРіРёСЃС‚СЂРµ
+	color_t color;				// Р¦РІРµС‚Р° СѓР·Р»Р°: RED, BLACK	
 
-	struct RBNode* parent;		// Предок узла
-	struct RBNode* left;		// Левый потомок узла
-	struct RBNode* right;		// Правый потомок узла
+	struct RBNode* parent;		// РџСЂРµРґРѕРє СѓР·Р»Р°
+	struct RBNode* left;		// Р›РµРІС‹Р№ РїРѕС‚РѕРјРѕРє СѓР·Р»Р°
+	struct RBNode* right;		// РџСЂР°РІС‹Р№ РїРѕС‚РѕРјРѕРє СѓР·Р»Р°
 } RBNode;
 
-typedef struct RBTree {			// Структура К/Ч дерева
-	struct RBNode* root;		// Корень дерева
-	struct RBNode* NIL;			// Ограничитель (нулевой элемент)
+typedef struct RBTree {			// РЎС‚СЂСѓРєС‚СѓСЂР° Рљ/Р§ РґРµСЂРµРІР°
+	struct RBNode* root;		// РљРѕСЂРµРЅСЊ РґРµСЂРµРІР°
+	struct RBNode* NIL;			// РћРіСЂР°РЅРёС‡РёС‚РµР»СЊ (РЅСѓР»РµРІРѕР№ СЌР»РµРјРµРЅС‚)
 } RBTree;
 
-// Инициализация дерева
+// РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ РґРµСЂРµРІР°
 void initTree(RBTree* T);	
-// Удаление дерева
+// РЈРґР°Р»РµРЅРёРµ РґРµСЂРµРІР°
 void deleteTree(RBTree* T);								
 
-// Добавление нового элемента
+// Р”РѕР±Р°РІР»РµРЅРёРµ РЅРѕРІРѕРіРѕ СЌР»РµРјРµРЅС‚Р°
 void add(RBTree* T, uint8_t value);						
 
-// Удаление минимального элемента
+// РЈРґР°Р»РµРЅРёРµ РјРёРЅРёРјР°Р»СЊРЅРѕРіРѕ СЌР»РµРјРµРЅС‚Р°
 void deleteMin(RBTree* T);		
-// Удаление максимального элемента
+// РЈРґР°Р»РµРЅРёРµ РјР°РєСЃРёРјР°Р»СЊРЅРѕРіРѕ СЌР»РµРјРµРЅС‚Р°
 void deleteMax(RBTree* T);								
 
-// Прямой обход дерева
+// РџСЂСЏРјРѕР№ РѕР±С…РѕРґ РґРµСЂРµРІР°
 void preOrderVisit(RBTree* T, RBNode* root);	
-// Симметричный обход дерева
+// РЎРёРјРјРµС‚СЂРёС‡РЅС‹Р№ РѕР±С…РѕРґ РґРµСЂРµРІР°
 void inOrderVisit(RBTree* T, RBNode* root);			
-// Обратный отход дерева
+// РћР±СЂР°С‚РЅС‹Р№ РѕС‚С…РѕРґ РґРµСЂРµРІР°
 void postOrderVisit(RBTree* T, RBNode* root);		
 
-// Чтение дерева из файла
+// Р§С‚РµРЅРёРµ РґРµСЂРµРІР° РёР· С„Р°Р№Р»Р°
 void readFile(const char* file_name, RBTree* T);	
 
 #endif
