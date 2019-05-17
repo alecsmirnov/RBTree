@@ -93,7 +93,7 @@ static RBNode* rightRotate(RBNode* y) {
 }
 
 // Получить дядю узла
-RBNode* getUncle(const RBNode* node) {
+static RBNode* getUncle(const RBNode* node) {
 	return isRightChild(node->parent) ? node->parent->parent->left :
 		node->parent->parent->right;
 }
