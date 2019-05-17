@@ -18,17 +18,17 @@
 #define CORRECT_READING 1			// Прочитан один элемент файла
 
 // Проверка дерева на пустоту
-bool isEmpty(const RBTree* T) {
+static bool isEmpty(const RBTree* T) {
 	return T->root == NULL;
 }
 
 // Проверка: является ли узел правым сыном
-bool isRightChild(const RBNode* node) {
+static bool isRightChild(const RBNode* node) {
 	return node == node->parent->right;
 }
 
 // Проверка: является ли узел листом
-bool isLeaf(const RBTree* T, const RBNode* node) {
+static bool isLeaf(const RBTree* T, const RBNode* node) {
 	return node->left == T->NIL && node->right == T->NIL;
 }
 
@@ -138,7 +138,7 @@ static void insertFixup(RBTree* T, RBNode* node) {
 }
 
 // Сделать корнем элемент, не имеющий входных дуг. Используется после поворотов дерева
-void setRoot(RBTree* T) {
+static void setRoot(RBTree* T) {
 	while (T->root->parent != T->NIL)
 		T->root = T->root->parent;
 }
